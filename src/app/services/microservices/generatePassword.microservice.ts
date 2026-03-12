@@ -1,5 +1,5 @@
 import {WritableSignal} from '@angular/core';
-import {Observable} from 'rxjs';
+import {catchError, EMPTY, Observable} from 'rxjs';
 
 export function generatePassword(
   generateFn: (options: any) => Observable<string>,
@@ -8,11 +8,17 @@ export function generatePassword(
 ) {
   state.isLoading.set(true);
 
-  generateFn(options).subscribe({
+  generateFn(options).pipe(
+    catchError((err) => {
+      console.error('Error while generating:', err);
+      state.isLoading.set(false);
+      alert('Server error');
+      return EMPTY;
+    })
+  ).subscribe({
     next: (pass) => {
       state.password.set(pass);
       state.isLoading.set(false);
-    },
-    error: () => state.isLoading.set(false)
+    }
   });
 }

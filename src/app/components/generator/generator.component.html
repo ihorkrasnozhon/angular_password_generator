@@ -8,6 +8,7 @@
     (copy)="copyToClipboard()"
   />
 
+
   <app-strength-meter
     [strength]="strength()"
     [barClass]="barClass()"
@@ -18,9 +19,29 @@
 
     <app-password-settings [form]="passwordForm" />
 
-    <button type="submit" class="generate-btn" [disabled]="passService.isLoading()">
-      {{ passService.isLoading() ? 'Generating...' : 'Generate' }}
+    <button
+      type="submit"
+      class="generate-btn"
+      [disabled]="passService.isLoading()">
+
+      @if (!passService.isLoading()) {
+        <span>Generate</span>
+      } @else {
+        <div class="spinner-wrapper">
+          <div class="spinner"></div>
+          <span class="loading-text">Generating...</span>
+        </div>
+      }
     </button>
   </form>
 
 </div>
+
+@if (toast.isVisible()) {
+  <div class="toast-notification">
+    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    {{ toast.message() }}
+  </div>
+}

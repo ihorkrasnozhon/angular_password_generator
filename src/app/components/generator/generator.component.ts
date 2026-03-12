@@ -6,6 +6,7 @@ import {getBarClass, getTextClass} from '../../services/microservices/getStrengt
 import {PasswordDisplayComponent} from '../passwordDisplay/passwordDisplay.component';
 import {StrengthMeterComponent} from '../strength-meter/strength-meter.component';
 import {PasswordSettingsComponent} from '../settings/settings.component';
+import {ToastService} from '../../services/microservices/toast.microservice';
 
 @Component({
   selector: 'app-password-generator',
@@ -25,6 +26,7 @@ export class PasswordGeneratorComponent {
   passwordForm: FormGroup;
   isPasswordHidden = signal(true);
   public passService = inject(PasswordService);
+  toast = inject(ToastService);
 
   strength = computed(() => this.passService.strength());
 
@@ -45,5 +47,8 @@ export class PasswordGeneratorComponent {
 
   onGenerate() {this.passService.generate(this.passwordForm.value)};
 
-  copyToClipboard() {this.passService.copyToClipboard()};
+  async copyToClipboard() {
+    await this.passService.copyToClipboard();
+    this.toast.show('Copied to clipboard!');
+  };
 }
