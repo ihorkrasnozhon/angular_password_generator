@@ -1,0 +1,26 @@
+<div class="password-card">
+  <h2>Password generator</h2>
+
+  <app-password-display
+    [password]="passService.password()"
+    [isHidden]="isPasswordHidden()"
+    (toggleVisibility)="togglePasswordVisibility()"
+    (copy)="copyToClipboard()"
+  />
+
+  <app-strength-meter
+    [strength]="strength()"
+    [barClass]="barClass()"
+    [textClass]="textClass()"
+  />
+
+  <form [formGroup]="passwordForm" (ngSubmit)="onGenerate()">
+
+    <app-password-settings [form]="passwordForm" />
+
+    <button type="submit" class="generate-btn" [disabled]="passService.isLoading()">
+      {{ passService.isLoading() ? 'Generating...' : 'Generate' }}
+    </button>
+  </form>
+
+</div>

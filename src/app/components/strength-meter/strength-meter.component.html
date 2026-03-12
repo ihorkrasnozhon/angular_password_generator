@@ -1,0 +1,16 @@
+@if (strength() > 0) {
+  <div class="strength-meter">
+    <div class="strength-bar-container">
+      <div class="strength-bar"
+           [style.width.%]="strength() * 20"
+           [ngClass]="barClass()">
+      </div>
+
+      <span class="strength-status-text"
+            [ngClass]="textClass()"
+            [style.left.%]="strength() * 20">
+        {{ labels[strength() - 1] }}
+      </span>
+    </div>
+  </div>
+}

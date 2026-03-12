@@ -1,0 +1,43 @@
+<div [formGroup]="form()">
+  <div class="length-settings">
+    <span class="options__label">
+      Length:
+    </span>
+
+    <input
+      type="number"
+      class="options__number"
+      formControlName="length"
+      [value]="form().get('length')?.value"
+      min="4" max="50">
+
+    <input
+      type="range"
+      class="options__range"
+      formControlName="length"
+      [value]="form().get('length')?.value"
+      min="4" max="50">
+  </div>
+
+  <div class="options">
+    <label class="options__item">
+      <input type="checkbox" class="options__checkbox" formControlName="includeNumbers">
+      <span class="options__label">Numbers</span>
+    </label>
+
+    <label class="options__item">
+      <input type="checkbox" class="options__checkbox" formControlName="includeSymbols">
+      <span class="options__label">Symbols</span>
+    </label>
+
+    <label class="options__item">
+      <input type="checkbox" class="options__checkbox" formControlName="includeUppercase">
+      <span class="options__label">Upper-case</span>
+    </label>
+
+    <label class="options__item">
+      <input type="checkbox" class="options__checkbox" formControlName="includeLowercase">
+      <span class="options__label">Lower-case</span>
+    </label>
+  </div>
+</div>
