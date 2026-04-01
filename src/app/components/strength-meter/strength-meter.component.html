@@ -9,7 +9,7 @@
       <span class="strength-status-text"
             [ngClass]="textClass()"
             [style.left.%]="strength() * 20">
-        {{ labels[strength() - 1] }}
+        {{ strength() > 0 ? labels[strength() - 1] : 'Weak' }}
       </span>
     </div>
   </div>

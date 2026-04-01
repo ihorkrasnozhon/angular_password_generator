@@ -4,19 +4,27 @@
       Length:
     </span>
 
-    <input
-      type="number"
-      class="options__number"
-      formControlName="length"
-      [value]="form().get('length')?.value"
-      min="4" max="50">
+    <div class="options__number-wrapper">
+      <input
+        type="number"
+        class="options__number"
+        formControlName="length"
+        min="4" max="50"
+        readonly
+      >
+      <div class="custom-arrows">
+        <button type="button" (click)="stepUp()">▲</button>
+        <button type="button" (click)="stepDown()">▼</button>
+      </div>
+    </div>
 
     <input
       type="range"
       class="options__range"
       formControlName="length"
       [value]="form().get('length')?.value"
-      min="4" max="50">
+      min="4" max="50"
+    >
   </div>
 
   <div class="options">

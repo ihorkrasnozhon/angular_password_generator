@@ -1,5 +1,49 @@
 .options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 
+.options__number-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.options__number {
+  padding-right: 5px;
+}
+
+.custom-arrows {
+
+  position: absolute;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-arrows button {
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
+  color: #4cd9ff;
+  font-size: 8px;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.1s;
+  width: 13px;
+  height: 13px;
+}
+
+.custom-arrows button:last-child {
+  padding-top: 2px;
+}
+
+.custom-arrows button:active {
+  transform: scale(1.1);
+}
+.custom-arrows button:hover {
+  background: rgba(85, 225, 255, 0.15);
+  border-radius: 50%;
+}
+
 .options__item {
   display: flex;
   align-items: center;
