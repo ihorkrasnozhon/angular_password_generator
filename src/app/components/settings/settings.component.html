@@ -10,6 +10,7 @@
         class="options__number"
         formControlName="length"
         min="4" max="50"
+        [value]="form().get('length')?.value"
         readonly
       >
       <div class="custom-arrows">
